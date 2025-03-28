@@ -1,6 +1,7 @@
 [versions]
 agp = "8.8.0"
 kotlin = "1.9.24"
+ksp = "1.9.24-1.0.20"
 coreKtx = "1.15.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -11,11 +12,13 @@ activity = "1.10.0"
 constraintlayout = "2.2.0"
 jetbrainsKotlinJvm = "1.9.24"
 retrofit = "2.9.0"
-moshi = "1.14.0"
+moshi = "1.15.1"
 okhttp = "4.10.0"
 koin-bom = "4.0.3"
 
 [libraries]
+moshi-ksp = { module = "com.squareup.moshi:moshi-kotlin-codegen", version.ref = "moshi" } # Для Moshi + KSP
+ksp-plugin = { module = "com.google.devtools.ksp:symbol-processing-gradle-plugin", version.ref = "ksp" }
 koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin-bom" }
 koin-core = { module = "io.insert-koin:koin-core" }
 koin-android = { module = "io.insert-koin:koin-android" }
@@ -38,4 +41,4 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
-
+ksp-plugin = { id = "com.google.devtools.ksp", version.ref = "ksp" }
