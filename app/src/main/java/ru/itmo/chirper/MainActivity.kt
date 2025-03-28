@@ -3,7 +3,6 @@ package ru.itmo.chirper
 import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
@@ -35,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = postAdapter
 
+
         binding.fabProfile.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
 
@@ -60,19 +60,18 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
-
     private fun showLoading() {
         Toast.makeText(this, "Загрузка постов...", Toast.LENGTH_SHORT).show()
     }
 
     private fun showPosts(posts: List<Post>) {
-        Log.e("DEBUG", "Received ${posts.size} posts")
-        for (post in posts) {
-            Log.e("DEBUG", "Post: username=${post.username}, title=${post.title}, content=${post.content}, date=${post.date}")
+        if (posts.isEmpty()) {
+            Toast.makeText(this, "Нет постов для отображения", Toast.LENGTH_SHORT).show()
+            return
         }
 
         postAdapter.submitList(posts)
+        recyclerView.smoothScrollToPosition(0)
     }
 
     private fun showError(message: String) {
