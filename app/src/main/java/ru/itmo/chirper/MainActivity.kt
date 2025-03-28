@@ -36,7 +36,9 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.fabProfile.setOnClickListener {
-            val intent = Intent(this, ProfileActivity::class.java)
+            val intent = Intent(this, ProfileActivity::class.java).apply {
+                putExtra("USER_ID", 2)
+            }
 
             val options = ActivityOptions.makeCustomAnimation(
                 this,

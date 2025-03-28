@@ -11,4 +11,8 @@ class PostsRepository(private val api: PostApi, private val postMapper: IMapper<
     override suspend fun getPosts(): List<Post> {
         return api.getPosts().map { postMapper.map(it) }
     }
+
+    override suspend fun getPostsByUserId(id: Int): List<Post> {
+        return api.getPostsByUserId(id).map { postMapper.map(it) }
+    }
 }
