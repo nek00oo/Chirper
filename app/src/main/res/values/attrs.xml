@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="postCardStyle" format="reference"/>
+
+    <declare-styleable name="PostCardView">
+        <attr name="titleTextSize" format="dimension"/>
+        <attr name="contentMaxLines" format="integer"/>
+        <attr name="showDate" format="boolean"/>
+    </declare-styleable>
+
+    <style name="Widget.Chirper.PostCard" parent="CardView">
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+        <item name="android:layout_margin">@dimen/card_margin</item>
+        <item name="titleTextSize">@dimen/text_size_title</item>
+        <item name="contentMaxLines">5</item>
+        <item name="showDate">true</item>
+    </style>
+</resources>

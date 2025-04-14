@@ -1,36 +1,37 @@
 package ru.itmo.chirper.adapters
 
-import android.view.LayoutInflater
-import android.view.View
+import ru.itmo.chirper.views.PostCardView
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import ru.itmo.chirper.R
 import ru.itmo.chirper.domain.entity.Post
 
 class PostAdapter : ListAdapter<Post, PostAdapter.PostViewHolder>(PostDiffCallback()) {
 
-    class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val tvUsername: TextView = itemView.findViewById(R.id.tvUsername)
-        val tvPostTitle: TextView = itemView.findViewById(R.id.tvPostTitle)
-        val tvPostContent: TextView = itemView.findViewById(R.id.tvPostContent)
-        val tvPostDate: TextView = itemView.findViewById(R.id.tvPostDate)
+    class PostViewHolder(private val postCardView: PostCardView) : RecyclerView.ViewHolder(postCardView) {
+        fun bind(post: Post) {
+            postCardView.setUsername(post.username)
+            postCardView.setTitle(post.title)
+            postCardView.setContent(post.content)
+            postCardView.setDate(post.date)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_post, parent, false)
+        val view = PostCardView(parent.context).apply {
+            layoutParams = ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+        }
+
+
         return PostViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
-        val post = getItem(position)
-        holder.tvUsername.text = post.username
-        holder.tvPostTitle.text = post.title
-        holder.tvPostContent.text = post.content
-        holder.tvPostDate.text = post.date
+        holder.bind(getItem(position))
     }
 
     class PostDiffCallback : DiffUtil.ItemCallback<Post>() {

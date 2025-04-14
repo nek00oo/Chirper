@@ -7,4 +7,10 @@
     <color name="onSurface">#000000</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="card_background">#FFFFFF</color>
+    <color name="text_username">#333333</color>
+    <color name="text_title">#1A1A1A</color>
+    <color name="text_content">#555555</color>
+    <color name="text_date">#888888</color>
 </resources>
