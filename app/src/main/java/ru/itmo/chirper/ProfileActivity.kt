@@ -1,6 +1,7 @@
 package ru.itmo.chirper
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -37,6 +38,11 @@ class ProfileActivity : AppCompatActivity() {
             ?: throw IllegalStateException("User ID must be provided!")
 
         viewModel = getViewModel(parameters = { parametersOf(userId) })
+
+        binding.btnOpenSdui.setOnClickListener {
+            val intent = Intent(this, SduiProfileActivity::class.java)
+            startActivity(intent)
+        }
 
         setupRecyclerView()
         setupObservers()

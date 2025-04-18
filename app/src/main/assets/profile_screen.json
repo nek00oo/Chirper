@@ -1,0 +1,97 @@
+{
+  "screen": {
+    "title": "Профиль",
+    "components": [
+      {
+        "type": "avatar",
+        "url": "ic_profile",
+        "layout": {
+          "alignment": "center",
+          "margin": { "bottom": 16 }
+        }
+      },
+      {
+        "type": "text",
+        "style": "h2",
+        "text": "user123",
+        "layout": {
+          "alignment": "center",
+          "margin": { "top": 8, "bottom": 8 }
+        }
+      },
+      {
+        "type": "card",
+        "text": "Имя: Иван Петров",
+        "layout": {
+          "width": "match_parent",
+          "height": "wrap_content",
+          "padding": { "all": 15 }
+        },
+        "style": {
+          "backgroundColor": "#FFFFFF",
+          "cornerRadius": 12
+        }
+      },
+      {
+        "type": "card",
+        "text": "Email: ivan.petrov@example.com",
+        "layout": {
+          "width": "match_parent",
+          "height": "wrap_content",
+          "padding": { "all": 15 }
+        },
+        "style": {
+          "backgroundColor": "#FFFFFF",
+          "cornerRadius": 12
+        }
+      },
+      {
+        "type": "card",
+        "text": "Город: Санкт‑Петербург",
+        "layout": {
+          "width": "match_parent",
+          "height": "wrap_content",
+          "padding": { "all": 15 }
+        },
+        "style": {
+          "backgroundColor": "#FFFFFF",
+          "cornerRadius": 12
+        }
+      },
+      {
+        "type": "card",
+        "text": "Образование: ИТМО, Программная инженерия",
+        "layout": {
+          "width": "match_parent",
+          "height": "wrap_content",
+          "padding": { "all": 15 }
+        },
+        "style": {
+          "backgroundColor": "#FFFFFF",
+          "cornerRadius": 12
+        }
+      },
+      {
+        "type": "card",
+        "text": "Опыт: 2 года коммерческой разработки на Kotlin",
+        "layout": {
+          "width": "match_parent",
+          "height": "wrap_content",
+          "margin": { "bottom": 8 },
+          "padding": { "all": 15 }
+        },
+        "style": {
+          "backgroundColor": "#FFFFFF",
+          "cornerRadius": 12
+        }
+      },
+      {
+        "type": "stats",
+        "items": [
+          { "label": "Постов",      "value": "34"  },
+          { "label": "Подписчиков", "value": "128" }
+        ]
+      }
+    ]
+  }
+}

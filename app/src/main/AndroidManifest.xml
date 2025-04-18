@@ -29,6 +29,11 @@
         <activity
             android:name=".ProfileActivity"
             android:exported="true" />
+
+        <activity
+            android:name=".SduiProfileActivity"
+            android:exported="true"/>
+
     </application>
 
 </manifest>

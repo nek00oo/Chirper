@@ -5,16 +5,30 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
+    <ImageButton
+        android:id="@+id/btnOpenSdui"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="Открыть SDUI"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_home"
+        app:tint="@color/onSurface"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp" />
+
     <ImageView
         android:id="@+id/ivAvatar"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:src="@drawable/ic_profile"
+        android:layout_marginTop="32dp"
         android:contentDescription="Аватарка"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/ic_profile"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="32dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvProfileUsername"
@@ -33,11 +47,11 @@
         android:id="@+id/rvProfilePosts"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="16dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@id/tvProfileUsername"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvProfileUsername" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
