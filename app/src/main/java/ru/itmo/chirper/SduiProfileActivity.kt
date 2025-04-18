@@ -1,12 +1,12 @@
 package ru.itmo.chirper
 
-import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -25,30 +25,25 @@ class SduiProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sdui_profile)
 
-        // 1. Прочитать JSON из assets
         val json = assets.open("profile_screen.json")
             .bufferedReader().use { it.readText() }
         val screen = parseScreen(json)
 
-        // 2. Установить заголовок Activity
         title = screen.title
 
-        // 3. Найти контейнер для вьюх
         val container = findViewById<LinearLayout>(R.id.llContainer)
 
-        fun Context.toPx(size: LayoutSize): Int = when(size) {
-            LayoutSize.MatchParent -> ViewGroup.LayoutParams.MATCH_PARENT
-            LayoutSize.WrapContent -> ViewGroup.LayoutParams.WRAP_CONTENT
+        fun toPx(size: LayoutSize): Int = when(size) {
+            LayoutSize.MatchParent -> MATCH_PARENT
+            LayoutSize.WrapContent -> WRAP_CONTENT
             is LayoutSize.Dp       -> dp(size.value)
         }
 
-        // 4. Пройти по компонентам и создать View для каждого
         screen.components.forEach { comp ->
             when (comp) {
                 is Component.Avatar -> {
-                    // Создаем ShapeableImageView
                     val iv = ShapeableImageView(this)
-                    // Подготовим LayoutParams с отступами и выравниванием
+
                     val size = resources.getDimensionPixelSize(R.dimen.avatar_size)
                     val lp = LinearLayout.LayoutParams(size, size).apply {
                         comp.layout.margin.top?.let    { topMargin    = dp(it) }
@@ -105,7 +100,6 @@ class SduiProfileActivity : AppCompatActivity() {
                 }
 
                 is Component.Card -> {
-                    // определяем размеры
                     val wPx = toPx(comp.layout.width)
                     val hPx = toPx(comp.layout.height)
 
@@ -128,7 +122,6 @@ class SduiProfileActivity : AppCompatActivity() {
                         orientation  = LinearLayout.VERTICAL
                         layoutParams = lp
 
-                        // Применяем фон и скругление
                         val bgColor = comp.style.backgroundColor ?: "#FFFFFF"
                         val radius  = dp(comp.style.cornerRadius ?: 8)
                         background = GradientDrawable().apply {
@@ -139,7 +132,6 @@ class SduiProfileActivity : AppCompatActivity() {
                         setPadding(ps, pt, pe, pb)
                     }
 
-                    // Внутри – просто TextView
                     val tv = TextView(this).apply {
                         text = comp.text
                         setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f)
@@ -152,7 +144,7 @@ class SduiProfileActivity : AppCompatActivity() {
                     val row = LinearLayout(this).apply {
                         orientation = LinearLayout.HORIZONTAL
                     }
-                    // Параметры контейнера row
+
                     val rowLp = LinearLayout.LayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT,
                         WRAP_CONTENT
