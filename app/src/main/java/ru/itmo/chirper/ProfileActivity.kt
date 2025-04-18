@@ -13,6 +13,7 @@ import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.core.parameter.parametersOf
 import ru.itmo.chirper.adapters.PostAdapter
 import ru.itmo.chirper.databinding.ActivityProfileBinding
+import ru.itmo.chirper.decoration.SpacingCardDecoration
 import ru.itmo.chirper.domain.entity.Post
 import ru.itmo.chirper.state.ChirperState
 import ru.itmo.chirper.viewmodel.ProfileViewModel
@@ -29,11 +30,12 @@ class ProfileActivity : AppCompatActivity() {
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Получаем ID пользователя из Intent
+        val spacing = resources.getDimensionPixelSize(R.dimen.card_margin)
+        binding.rvProfilePosts.addItemDecoration(SpacingCardDecoration(spacing))
+
         userId = intent.getIntExtra("USER_ID", -1).takeIf { it != -1 }
             ?: throw IllegalStateException("User ID must be provided!")
 
-        // Инициализируем ViewModel с параметром
         viewModel = getViewModel(parameters = { parametersOf(userId) })
 
         setupRecyclerView()

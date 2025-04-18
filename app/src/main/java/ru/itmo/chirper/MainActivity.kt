@@ -14,6 +14,7 @@ import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.itmo.chirper.adapters.PostAdapter
 import ru.itmo.chirper.databinding.ActivityMainBinding
+import ru.itmo.chirper.decoration.SpacingCardDecoration
 import ru.itmo.chirper.domain.entity.Post
 import ru.itmo.chirper.state.ChirperState
 import ru.itmo.chirper.viewmodel.MainViewModel
@@ -34,6 +35,8 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = postAdapter
 
+        val spacing = resources.getDimensionPixelSize(R.dimen.card_margin)
+        binding.rvPosts.addItemDecoration(SpacingCardDecoration(spacing))
 
         binding.fabProfile.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java).apply {
