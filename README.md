@@ -4,3 +4,5 @@
 
 - MVI
 - Retrofit
+- KOIN
+- Custom Views
