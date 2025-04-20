@@ -8,13 +8,13 @@ import ru.itmo.chirper.domain.repository.IPostsRepository
 import ru.itmo.chirper.domain.repository.IStorageRepository
 import ru.itmo.data.api.ApiClient
 import ru.itmo.data.api.PostApi
-import ru.itmo.data.api.StorageApi
-import ru.itmo.data.api.StorageApiClient
+import ru.itmo.data.api.SduiStorageApi
+import ru.itmo.data.api.SduiStorageApiClient
 import ru.itmo.data.mappers.IMapper
 import ru.itmo.data.mappers.PostMapper
 import ru.itmo.data.models.PostDto
 import ru.itmo.data.repository.PostsRepository
-import ru.itmo.data.repository.StorageRepository
+import ru.itmo.data.repository.SduiStorageRepository
 
 val dataModule = module {
     single<IPostsRepository> {
@@ -22,7 +22,7 @@ val dataModule = module {
     }
 
     single<IStorageRepository> {
-        StorageRepository(api = get())
+        SduiStorageRepository(api = get())
     }
 
     single<IMapper<PostDto, Post>> {
@@ -30,8 +30,8 @@ val dataModule = module {
     }
 
     single(named("PostRetrofit")) { ApiClient.retrofit }
-    single(named("StorageRetrofit")) { StorageApiClient.retrofit }
+    single(named("StorageRetrofit")) { SduiStorageApiClient.retrofit }
 
     single<PostApi> { get<Retrofit>(named("PostRetrofit")).create(PostApi::class.java) }
-    single<StorageApi> { get<Retrofit>(named("StorageRetrofit")).create(StorageApi::class.java) }
+    single<SduiStorageApi> { get<Retrofit>(named("StorageRetrofit")).create(SduiStorageApi::class.java) }
 }

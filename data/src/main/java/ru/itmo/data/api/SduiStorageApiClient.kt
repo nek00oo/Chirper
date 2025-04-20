@@ -9,7 +9,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-object StorageApiClient {
+object SduiStorageApiClient {
     private const val BASE_URL = "https://alfa-itmo.ru/"
 
     private val moshi: Moshi = Moshi.Builder()
@@ -22,7 +22,7 @@ object StorageApiClient {
 
     private val authInterceptor = Interceptor { chain ->
         val original = chain.request()
-        val credentials = Credentials.basic("your_login", "your_password")
+        val credentials = Credentials.basic("369103", "MiWfBKrJvh__")
         val request = original.newBuilder()
             .header("Authorization", credentials)
             .header("Content-Type", "application/json")

@@ -4,7 +4,7 @@ import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 import ru.itmo.chirper.viewmodel.MainViewModel
 import ru.itmo.chirper.viewmodel.ProfileViewModel
-import ru.itmo.chirper.viewmodel.StorageViewModel
+import ru.itmo.chirper.viewmodel.SduiProfileViewModel
 
 val appModule = module {
     viewModel<MainViewModel> {
@@ -18,7 +18,7 @@ val appModule = module {
         )
     }
 
-    viewModel<StorageViewModel> {
-        StorageViewModel(getUseCase = get())
+    viewModel<SduiProfileViewModel> {
+        SduiProfileViewModel(getUseCase = get())
     }
 }
